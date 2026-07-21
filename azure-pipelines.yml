@@ -5,5 +5,32 @@ pool:
   vmImage: ubuntu-latest
 
 stages:
-  - stage: BuildApp
-  - stage: Deploydev
+  - stage: BuildDev
+    displayName: Build Stage for DEV
+    jobs:
+      - job: BuildMobileApp
+        displayName: Build MOBILE App for DEV
+      - job: BuildReactApp
+        displayName: Build REACT App for DEV
+      - job: BuildNodeApp
+        displayName: Build NODE App for DEV
+
+  - stage: BuildStaging
+    displayName: Build Stage for STAGING
+    jobs:
+      - job: BuildMobileApp
+        displayName: Build MOBILE App for STAGING
+      - job: BuildReactApp
+        displayName: Build REACT App for STAGING
+      - job: BuildNodeApp
+        displayName: Build NODE App for STAGING
+
+  - stage: BuildProd
+    displayName: Build Stage for PROD
+    jobs:
+      - job: BuildMobileApp
+        displayName: Build MOBILE App for PROD
+      - job: BuildReactApp
+        displayName: Build REACT App for PROD
+      - job: BuildNodeApp
+        displayName: Build NODE App for PROD
